@@ -1,5 +1,6 @@
 package com.sunqb.utils.random;
 
+import java.math.BigDecimal;
 import java.util.Random;
 import java.util.UUID;
 
@@ -41,6 +42,23 @@ public final class UUIDUtil {
         }
 
         return buffer.toString();
+    }
+    
+    /**
+     * 生成n位随机数字
+     * 
+     * @param bit 位数
+     * @return
+     */
+    public static String getRandom(int bit) {
+        String result = "";
+        final int post = bit;
+        Random rm = new Random();
+        double pross = (1 + rm.nextDouble()) * Math.pow(10, post);
+        BigDecimal big = new BigDecimal(pross);
+        String fix = String.valueOf(big.toString());
+        result = fix.substring(1, bit + 1);
+        return result;
     }
 
 }
